@@ -37,15 +37,4 @@ public class BookService {
         bookRepo.delete(id);
     }
 
-    @PostConstruct
-    public void init() {
-        Book b = new Book();
-        b.setTitle("Test insert desde app");
-        b.setAuthor("Backend");
-        b.setIsbn("TEST-INIT-001");
-        b.setTotalCopies(2);
-        b.setAvailableCopies(2);
-        create(b);
-    }
-
 }
