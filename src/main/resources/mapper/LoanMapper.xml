@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.repository.LoanRepository">
+
+    <resultMap id="LoanResult" type="Loan">
+        <id property="id" column="id"/>
+        <result property="studentId" column="student_id"/>
+        <result property="bookId" column="book_id"/>
+        <result property="loanDate" column="loan_date"/>
+        <result property="returnDate" column="return_date"/>
+        <result property="returned" column="returned"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="LoanResult">
+        SELECT * FROM loans
+    </select>
+
+    <select id="findById" parameterType="long" resultMap="LoanResult">
+        SELECT * FROM loans WHERE id = #{id}
+    </select>
+
+    <select id="findByStudentId" parameterType="long" resultMap="LoanResult">
+        SELECT * FROM loans WHERE student_id = #{studentId}
+    </select>
+
+    <insert id="insert" parameterType="Loan">
+        INSERT INTO loans (student_id, book_id, loan_date, returned)
+        VALUES (#{studentId}, #{bookId}, SYSDATE, 0)
+    </insert>
+
+    <update id="markAsReturned" parameterType="long">
+        UPDATE loans
+        SET return_date = SYSDATE,
+        returned = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>
