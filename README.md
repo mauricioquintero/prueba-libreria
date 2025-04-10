@@ -9,6 +9,7 @@
 
 ¿Qué tipo de arquitectura manejas en Java?
 - Estoy mas familiarizado con MVC, ya que la he implementado en varios proyectos personales. Tambien he trabajado con Microservicios
+
 ¿Qué es la Garbage Collection en Java?
 - Java utiliza el garbage collector para deshacerse de objetos que ya no estan en uso
 
